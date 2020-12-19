@@ -1,0 +1,9 @@
+begin
+  a := 3;
+  b := 4;
+  if (a > 2) then
+  begin
+    a := b + 1;
+  end
+  ;
+end

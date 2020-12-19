@@ -1,0 +1,11 @@
+begin
+  a := (2 - 1) * 3;
+  b := -3
+  if (false && a > b) || a > b then
+  begin
+    c := 1 + 2;
+    d := a / b;
+  end
+  ;
+  a := a + 1;
+end

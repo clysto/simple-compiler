@@ -1,0 +1,10 @@
+begin
+  a := 2;
+  b := 3;
+  if (a + 1) > b 
+  begin
+    c := a + b / 2;
+  end
+  ;
+  a := a + b;
+end
