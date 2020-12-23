@@ -1,6 +1,6 @@
 %{
-#include "y.tab.h"
-#include "node.h"
+#include <parser.tab.h>
+#include <node.h>
 #include <stdlib.h>
 int cur_line = 1;
 void yyerror(struct Node **AST, const char *msg);

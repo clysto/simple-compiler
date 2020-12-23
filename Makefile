@@ -1,23 +1,21 @@
 CC = gcc
+CFLAGS = -std=c99 -fPIC -pedantic -Wall -g -I.
 OUT = my_compiler
-OBJ = lex.yy.o y.tab.o node.o main.o
+OBJECTS = lex.yy.o parser.tab.o node.o main.o
 SCANNER = scanner.l
 PARSER = parser.y
 
 build: $(OUT)
-	rm -f *.o lex.yy.c y.tab.c y.tab.h y.output
+	rm -f *.o *.yy.c *.tab.c *.tab.h parser.output y.dot
 
 clean:
-	rm -f *.o lex.yy.c y.tab.c y.tab.h y.output y.dot $(OUT)
+	rm -f *.o *.yy.c *.tab.c *.tab.h parser.output y.dot $(OUT)
 
-graph: $(PARSER)
-	bison -vdty -Wno-yacc --graph $< && rm -f *.o y.tab.c y.tab.h y.output
+$(OUT): $(OBJECTS)
+	$(CC) -o $(OUT) $(CFLAGS) $(OBJECTS)
 
-$(OUT): $(OBJ)
-	$(CC) -o $(OUT) $(OBJ)
-
-lex.yy.c: $(SCANNER) y.tab.c
+lex.yy.c: $(SCANNER) parser.tab.c
 	flex $<
 
-y.tab.c: $(PARSER)
-	bison -vdty -Wno-yacc $<
+parser.tab.c: $(PARSER)
+	bison -vdt $<

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
-#include "node.h"
+#include <node.h>
 
 int yyparse(struct Node **);
 
